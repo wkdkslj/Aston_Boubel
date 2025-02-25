@@ -1,38 +1,32 @@
-import org.example.Factorial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
+
+import static org.example.Factorial.factorial;
 
 public class FactorialTest {
 
     @DisplayName("Тесты для факториала 5")
-    @ParameterizedTest
-    @ValueSource(ints = 5)
-
-    public void testNumber5(int var) {
-        Assertions.assertEquals(120, var);
+    @Test
+    public void testNumber5() {
+        Assertions.assertEquals(120, factorial(5));
     }
 
     @DisplayName("Тесты для факториала 0")
-    @ParameterizedTest
-    @ValueSource(ints = 0)
-
-    public void testNumber0(int var) {
-        Assertions.assertEquals(1, var);
+    @Test
+    public void testNumber0() {
+        Assertions.assertEquals(1, factorial(0));
     }
 
     @DisplayName("Тесты для факториала 1")
-    @ParameterizedTest
-    @ValueSource(ints = 1)
-    public void testNumber1(int var) {
-        Assertions.assertEquals(1, var);
+    @Test
+    public void testNumber1() {
+        Assertions.assertEquals(1, factorial(1));
     }
 
     @DisplayName("Тесты для факториала -5")
-    @ParameterizedTest
-    @ValueSource(ints = -5)
+    @Test
     public void testNegativeNumber() {
-        Assertions.assertThrows(IllegalArgumentException.class, ()-> Factorial.factorial(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> factorial(-5));
     }
 }
